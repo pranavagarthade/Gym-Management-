@@ -250,7 +250,7 @@ app.post("/register", function (req, res) {
 
 // <<-------- App running port ------------->>
 // Define the starting port and maximum number of attempts
-const startingPort = 3000;
+var startingPort = process.env.PORT || 3000;
 const maxAttempts = 10;
 
 // Function to find an available port
@@ -263,7 +263,7 @@ function findAvailablePort(port, maxAttempts, callback) {
       process.exit(1);
     }
 
-    server.listen(port || process.env.PORT , () => {
+    server.listen(port, () => {
       console.log(`Server is running on port ${port}`);
       callback(port);
     });
