@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //<<--------------------Data base connetion------------------------>>
-mongoose.connect("mongodb://127.0.0.1:27017/guest", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://sanket:sanket1111@cluster0.fs525pb.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.set("useCreateIndex", true);
 
