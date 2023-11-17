@@ -248,42 +248,47 @@ app.post("/register", function (req, res) {
   });
 });
 
-// <<-------- App running port ------------->>
-// Define the starting port and maximum number of attempts
-var startingPort = process.env.port || 3000;
-const maxAttempts = 10;
+// // <<-------- App running port ------------->>
+// // Define the starting port and maximum number of attempts
+// var startingPort = process.env.PORT || 3000;
+// const maxAttempts = 10;
 
-// Function to find an available port
-function findAvailablePort(port, maxAttempts, callback) {
-  let attempts = 0;
+// // Function to find an available port
+// function findAvailablePort(port, maxAttempts, callback) {
+//   let attempts = 0;
 
-  function tryPort(port) {
-    if (attempts >= maxAttempts) {
-      console.error(`Could not find an available port after ${maxAttempts} attempts.`);
-      process.exit(1);
-    }
+//   function tryPort(port) {
+//     if (attempts >= maxAttempts) {
+//       console.error(`Could not find an available port after ${maxAttempts} attempts.`);
+//       process.exit(1);
+//     }
 
-    server.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-      callback(port);
-    });
+//     server.listen(port, () => {
+//       console.log(`Server is running on port ${port}`);
+//       callback(port);
+//     });
 
-    server.on('error', (err) => {
-      if (err.code === 'EADDRINUSE') {
-        attempts++;
-        tryPort(port + 1);
-      }
-    });
-  }
+//     server.on('error', (err) => {
+//       if (err.code === 'EADDRINUSE') {
+//         attempts++;
+//         tryPort(port + 1);
+//       }
+//     });
+//   }
 
-  tryPort(port);
-}
+//   tryPort(port);
+// }
 
-// Start the server on an available port
-findAvailablePort(startingPort, maxAttempts, (port) => {
-  console.log(`Server started on port http://localhost:${port}.`);
+// // Start the server on an available port
+// findAvailablePort(startingPort, maxAttempts, (port) => {
+//   console.log(`Server started on port http://localhost:${port}.`);
+// });
+
+var port = process.env.PORT || 3000;
+
+app.listen(port, function() {
+  console.log('App is running on http://localhost:' + port);
 });
-
 
 // <<----------- Logout ----------------->>
 
