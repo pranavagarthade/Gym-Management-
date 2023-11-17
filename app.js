@@ -250,7 +250,7 @@ app.post("/register", function (req, res) {
 
 // <<-------- App running port ------------->>
 // Define the starting port and maximum number of attempts
-var startingPort = process.env.PORT || 3000;
+var startingPort = process.env.port || 3000;
 const maxAttempts = 10;
 
 // Function to find an available port
