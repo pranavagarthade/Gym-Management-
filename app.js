@@ -263,7 +263,7 @@ function findAvailablePort(port, maxAttempts, callback) {
       process.exit(1);
     }
 
-    server.listen(port, () => {
+    server.listen(port || process.env.PORT , () => {
       console.log(`Server is running on port ${port}`);
       callback(port);
     });
